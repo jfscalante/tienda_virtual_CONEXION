@@ -3,15 +3,15 @@
 include 'conexion.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
-    $nombre = $_POST['nombre'];
-    $autor= $_POST['autor'];
+    $producto = $_POST['producto'];
     $precio= $_POST['precio'];
-    $disponible = $_POST["disponible"];
-    $sql = "UPDATE libros SET nombre='$nombre', autor='$autor', precio='$precio', disponible='$disponible' WHERE id_libros=$id";
+    $descripcion= $_POST['descripcion'];
+    $categoria = $_POST["categoria"];
+    $sql = "UPDATE productos SET producto='$producto', precio='$precio', descripcion='$descripcion', id_categoria='$categoria' WHERE id_producto=$id";
     
   
   if ($conn->query($sql) === TRUE) {
-    header("Location:mostrar.php");
+    header("Location:index.php");
 } else {
     echo "Error al actualizar el registro: " . $conn->error;
 }

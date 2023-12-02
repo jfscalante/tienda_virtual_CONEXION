@@ -13,31 +13,47 @@
 
     <?php 
  include 'conexion.php';
-$sql = "SELECT * FROM  libros WHERE  id_libros= ".$_REQUEST['Id'];
+$sql = "SELECT * FROM  productos WHERE  id_producto= ".$_REQUEST['Id'];
 $resultado = $conn ->query($sql);
 $row =$resultado->fetch_assoc();
 ?>
-  <input type="text" class="form-control" name="id" value="<?php echo $row['id_libros'];?>">
+  <input type="text" class="form-control" name="id" value="<?php echo $row['id_producto'];?>">
 
 
 
     <div class="mb-3">
-    <label class="form-label">Nombre</label>
-    <input type="text" class="form-control" name="nombre" value="<?php echo $row['nombre'];?>">
+    <label class="form-label">producto</label>
+    <input type="text" class="form-control" name="producto" value="<?php echo $row['producto'];?>">
 </div>
-  <div class="mb-3">
-    <label class="form-label">autor</label>
-    <input type="text" class="form-control"name="autor" value="<?php echo $row['autor'];?>" >
-  </div>
   <div class="mb-3">
     <label class="form-label">precio</label>
     <input type="text" class="form-control"name="precio" value="<?php echo $row['precio'];?>" >
   </div>
-
   <div class="mb-3">
-    <label class="form-label">disponible</label>
-    <input type="text" class="form-control"name="disponible" value="<?php echo $row['disponible'];?>" >
+    <label class="form-label">descripcion</label>
+    <input type="text" class="form-control"name="descripcion" value="<?php echo $row['descripcion'];?>" >
   </div>
+
+  <select class="form-select mb-3" aria-label="Default select example" name="categoria">
+            <option selected disabled>--Seleccione categoria --</option>
+          <?php
+               include 'conexion.php';
+
+                $sql1 = "SELECT * FROM categorias WHERE id_categoria=".$row['id_categoria'];
+                $resultado1 = $conn->query($sql1);
+
+                $row1 = $resultado1->fetch_assoc();
+
+                echo "<option selected value='".$row1['id_categoria']."'>".$row1['categoria']."</option>";
+
+                $sql2 = "SELECT * FROM categorias";
+                $resultado2 = $conn->query($sql2);
+
+                while ($Fila = $resultado2->fetch_array()) {
+                    echo "<option value='".$Fila['id_categoria']."'>".$Fila['categoria']."</option>";
+                }
+         ?>
+</select>
  
    
    <button type="submit" class="btn btn-warning">Modificar</button>

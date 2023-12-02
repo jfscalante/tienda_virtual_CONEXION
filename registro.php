@@ -27,7 +27,7 @@
             ?> <br>
 
 		<input type="submit" value="Enviar">
-		<button><a href="index.php">Mostrar datos</a></button>
+		<button><a href="index.php">Mostar datos</a></button>
 	</form>
 
 
