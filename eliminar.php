@@ -2,11 +2,11 @@
       include 'conexion.php';
 
     $id = $_REQUEST['Id'];
-    $sql = "DELETE FROM libros WHERE id_libros ='$id'";
+    $sql = "DELETE FROM productos WHERE id_producto ='$id'";
 
     $query = mysqli_query($conn,$sql);
     if ($query === TRUE) {
-        header("Location:mostrar.php");
+        header("Location:index.php");
     }
 
 ?>
